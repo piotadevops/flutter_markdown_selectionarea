@@ -539,7 +539,9 @@ class MarkdownBuilder implements md.NodeVisitor {
       return Semantics(
                 label: semanticsLabel,
                 button: true,
-                child: GestureDetector(onTap: recognizer.onTap, child: child)
+                child: InkWell(
+                  child: child,
+                  onTap: recognizer.onTap)
               );
     } else {
       return child;
