@@ -535,7 +535,12 @@ class MarkdownBuilder implements md.NodeVisitor {
     if (_linkHandlers.isNotEmpty) {
       final TapGestureRecognizer recognizer =
           _linkHandlers.last as TapGestureRecognizer;
-      return GestureDetector(onTap: recognizer.onTap, child: child);
+      String semanticsLabel = alt == null || alt.length == 0 ? 'Image' : alt;
+      return Semantics(
+                label: semanticsLabel,
+                button: true,
+                child: GestureDetector(onTap: recognizer.onTap, child: child)
+              );
     } else {
       return child;
     }
